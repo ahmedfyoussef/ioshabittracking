@@ -20,6 +20,9 @@
 		ABCB21722CFBA320006CDB22 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = ABCB21712CFBA320006CDB22 /* FirebaseDatabase */; };
 		ABCB21742CFBA32A006CDB22 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = ABCB21732CFBA32A006CDB22 /* FirebaseAnalytics */; };
 		ABCB21762CFBA531006CDB22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABCB21752CFBA530006CDB22 /* GoogleService-Info.plist */; };
+		ABCB217C2CFBAE11006CDB22 /* HabitsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCB217B2CFBAE11006CDB22 /* HabitsVC.swift */; };
+		ABCB217E2CFBAE69006CDB22 /* HabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCB217D2CFBAE69006CDB22 /* HabitCell.swift */; };
+		ABCB21812CFBB007006CDB22 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCB21802CFBB007006CDB22 /* Habit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		ABCB215C2CFBA177006CDB22 /* habitappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = habitappUITests.swift; sourceTree = "<group>"; };
 		ABCB215E2CFBA177006CDB22 /* habitappUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = habitappUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		ABCB21752CFBA530006CDB22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		ABCB217B2CFBAE11006CDB22 /* HabitsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsVC.swift; sourceTree = "<group>"; };
+		ABCB217D2CFBAE69006CDB22 /* HabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCell.swift; sourceTree = "<group>"; };
+		ABCB21802CFBB007006CDB22 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,9 +114,13 @@
 		ABCB213A2CFBA174006CDB22 /* habitapp */ = {
 			isa = PBXGroup;
 			children = (
+				ABCB217F2CFBAFEF006CDB22 /* models */,
+				ABCB217A2CFBAD96006CDB22 /* utils */,
+				ABCB21792CFBAD8A006CDB22 /* network */,
+				ABCB21782CFBAD71006CDB22 /* cells */,
+				ABCB21772CFBAD5C006CDB22 /* vcs */,
 				ABCB213B2CFBA174006CDB22 /* AppDelegate.swift */,
 				ABCB213D2CFBA174006CDB22 /* SceneDelegate.swift */,
-				ABCB213F2CFBA174006CDB22 /* ViewController.swift */,
 				ABCB21412CFBA174006CDB22 /* Main.storyboard */,
 				ABCB21442CFBA177006CDB22 /* Assets.xcassets */,
 				ABCB21462CFBA177006CDB22 /* LaunchScreen.storyboard */,
@@ -142,6 +152,45 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ABCB21772CFBAD5C006CDB22 /* vcs */ = {
+			isa = PBXGroup;
+			children = (
+				ABCB217B2CFBAE11006CDB22 /* HabitsVC.swift */,
+				ABCB213F2CFBA174006CDB22 /* ViewController.swift */,
+			);
+			path = vcs;
+			sourceTree = "<group>";
+		};
+		ABCB21782CFBAD71006CDB22 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				ABCB217D2CFBAE69006CDB22 /* HabitCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		ABCB21792CFBAD8A006CDB22 /* network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		ABCB217A2CFBAD96006CDB22 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		ABCB217F2CFBAFEF006CDB22 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				ABCB21802CFBB007006CDB22 /* Habit.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,8 +334,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABCB21402CFBA174006CDB22 /* ViewController.swift in Sources */,
+				ABCB217C2CFBAE11006CDB22 /* HabitsVC.swift in Sources */,
 				ABCB213C2CFBA174006CDB22 /* AppDelegate.swift in Sources */,
+				ABCB217E2CFBAE69006CDB22 /* HabitCell.swift in Sources */,
 				ABCB213E2CFBA174006CDB22 /* SceneDelegate.swift in Sources */,
+				ABCB21812CFBB007006CDB22 /* Habit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
