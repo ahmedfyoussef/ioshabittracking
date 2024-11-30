@@ -23,6 +23,8 @@
 		ABCB217C2CFBAE11006CDB22 /* HabitsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCB217B2CFBAE11006CDB22 /* HabitsVC.swift */; };
 		ABCB217E2CFBAE69006CDB22 /* HabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCB217D2CFBAE69006CDB22 /* HabitCell.swift */; };
 		ABCB21812CFBB007006CDB22 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCB21802CFBB007006CDB22 /* Habit.swift */; };
+		ABF4D0A82CFBC9A80019951A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF4D0A72CFBC9A80019951A /* Network.swift */; };
+		ABF4D0AA2CFBC9F10019951A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF4D0A92CFBC9F10019951A /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		ABCB217B2CFBAE11006CDB22 /* HabitsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsVC.swift; sourceTree = "<group>"; };
 		ABCB217D2CFBAE69006CDB22 /* HabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCell.swift; sourceTree = "<group>"; };
 		ABCB21802CFBB007006CDB22 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		ABF4D0A72CFBC9A80019951A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		ABF4D0A92CFBC9F10019951A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,7 @@
 		ABCB21792CFBAD8A006CDB22 /* network */ = {
 			isa = PBXGroup;
 			children = (
+				ABF4D0A72CFBC9A80019951A /* Network.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 		ABCB217A2CFBAD96006CDB22 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				ABF4D0A92CFBC9F10019951A /* Utils.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -338,7 +344,9 @@
 				ABCB213C2CFBA174006CDB22 /* AppDelegate.swift in Sources */,
 				ABCB217E2CFBAE69006CDB22 /* HabitCell.swift in Sources */,
 				ABCB213E2CFBA174006CDB22 /* SceneDelegate.swift in Sources */,
+				ABF4D0A82CFBC9A80019951A /* Network.swift in Sources */,
 				ABCB21812CFBB007006CDB22 /* Habit.swift in Sources */,
+				ABF4D0AA2CFBC9F10019951A /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

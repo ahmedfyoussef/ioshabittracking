@@ -60,6 +60,10 @@ class HabitsVC: UIViewController {
     //Initialize Variables
     var isActive = true   //used to handle app life cycle specially when app is in the background
     var habits = [Habit]()
+    var todaydate = ""
+
+    
+     // App life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,7 +75,8 @@ class HabitsVC: UIViewController {
         
         
         setupviews()
-
+        getcurrentdate()
+        fetchHabits()
     }
     override func viewWillDisappear(_ animated: Bool) {
         setviewinactive()
@@ -124,6 +129,10 @@ class HabitsVC: UIViewController {
 
         view.endEditing(true)
     }
+    
+    
+    // Views
+
     func setuptitletv(){
         view.addSubview(titletv)
         
@@ -165,7 +174,24 @@ class HabitsVC: UIViewController {
         addiv.addGestureRecognizer(tapRecogniser)
     }
     @objc func addivclicked() {
-        print("add btn clicked")
+        //print("add btn clicked")
+        
+        
+        var habitname = habitnameet.text!
+        
+        if habitname == "" {
+            showAlert(on: self, msg: "Habit name cant be empty")
+
+        }else {
+            
+            
+            
+            insertnewhabit(habitname: habitname)
+            self.habitnameet.text = ""
+
+        }
+        
+       
    }
     
     func setuphabitstableview(){
@@ -212,19 +238,127 @@ class HabitsVC: UIViewController {
         activityView.color = .gray
     }
     
+    func fetchHabits() {
+        activityView.isHidden = false
+        activityView.startAnimating()
+        
+        Network.shared.fetchHabits() { [weak self] habits in
+            // Update your habits array and UI on the main thread
+            DispatchQueue.main.async {
+                self?.habits = habits
+                self?.habitstableview.reloadData()
+                self?.activityView.isHidden = true
+                self?.activityView.stopAnimating()
+            }
+        }
+    }
+    // Functions
+    func insertnewhabit(habitname: String ) {
+           
+            
+             
+            Network.shared.insertnewhabit(habitname: habitname) { [weak self] success, error in
+                DispatchQueue.main.async {
+                    if success {
+                        
+                        var msg =  " Habit added successfully "
 
+                        self!.showAlert(on: self!, msg: msg)
+                 
+                        
+                   
+                    } else {
+                        var msg =   "Error adding new habit , please try again"
+
+                        self!.showAlert(on: self!, msg: msg)
+                    }
+                }
+            }
+        }
+    
+    func updatehabitstatus(habit: Habit, newStatus: Bool) {
+           
+            
+             
+            Network.shared.updatestatus(habitid: habit.habitid, status: newStatus) { [weak self] success, error in
+                DispatchQueue.main.async {
+                    if success {
+                        if (newStatus) {
+                            var msg = "You completed " + habit.habit + " for today!"
+                            self!.showAlert(on: self!, msg:msg  )
+                        }else {
+                            var msg =  habit.habit + " not completed so far!"
+
+                            self!.showAlert(on: self!, msg: msg)
+                        }
+                         
+                        
+                   
+                    } else {
+                        var msg =   "Error updating status , please try again"
+
+                        self!.showAlert(on: self!, msg: msg)
+                    }
+                }
+            }
+        }
+    
+    func deletehabit(habit: Habit) {
+           
+            
+             
+            Network.shared.deletehabit(habitid: habit.habitid) { [weak self] success, error in
+                DispatchQueue.main.async {
+                    if success {
+                   
+                        var msg =  "Habit deleted successfully "
+
+                        self!.showAlert(on: self!, msg: msg)
+                        
+                   
+                    } else {
+                        var msg =   "Error deleting , please try again"
+
+                        self!.showAlert(on: self!, msg: msg)
+                    }
+                }
+            }
+        }
+    
+    func getcurrentdate (){
+
+        // to be used in next version to store the habits by date
+        //ref.child(todaydate).child(habitid) instead of ref.child("userhabits").child(habitid)
+        //to automatically get daily habits
+        todaydate =   Utils.getCurrentDate()
+        
+    }
+    func showAlert(on viewController: UIViewController , msg : String) {
+        
+        let alert = UIAlertController(title: "Alert", message: msg, preferredStyle: .alert)
+        
+         
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+         
+        viewController.present(alert, animated: true, completion: nil)
+    }
 }
 extension HabitsVC  : UITableViewDelegate , UITableViewDataSource ,HabitCellDelegate
 {
     func didtapcheck(tappedIndex: IndexPath, status: Bool) {
-        print("checkbox clicked")
- 
+        //print("checkbox clicked")
+        let habit = self.habits[tappedIndex.row]
+
+        updatehabitstatus(habit: habit, newStatus: status)
         
     }
     
     func didtapdelete(tappedIndex: IndexPath) {
-        print("deletebtn clicked")
-
+        //print("deletebtn clicked")
+        let habit = self.habits[tappedIndex.row]
+        deletehabit(habit: habit)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
